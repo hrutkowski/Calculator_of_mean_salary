@@ -52,8 +52,6 @@ auto calculateMean(CollectionType collection)
     return result;
 }
 
-
-
 template<typename CollectionType>
 auto calculateMaleMean(CollectionType collection)
 {
