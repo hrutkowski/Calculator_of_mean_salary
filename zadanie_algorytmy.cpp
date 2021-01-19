@@ -52,23 +52,22 @@ auto calculateMean(CollectionType collection)
     return result;
 }
 
+
+
 template<typename CollectionType>
 auto calculateMaleMean(CollectionType collection)
 {
-    std::vector<Employee> result(collection.size());
     float result_mean;
 
-    std::copy(collection.begin(), collection.end(), result.begin());
-
-    std::sort(result.begin(), result.end(), 
+    std::sort(collection.begin(), collection.end(), 
         [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
 
-    auto it = std::find_if(result.begin(), result.end(),    
+    auto it = std::find_if(collection.begin(), collection.end(),    
         [](auto& arg) {return arg.isMale();}); 
 
-    result.erase(result.begin(), it);
+    collection.erase(collection.begin(), it);
 
-    result_mean = calculateMean(result);
+    result_mean = calculateMean(collection);
     
     return result_mean;
 }
@@ -76,20 +75,17 @@ auto calculateMaleMean(CollectionType collection)
 template<typename CollectionType>
 auto calculateFemaleMean(CollectionType collection)
 {
-    std::vector<Employee> result(collection.size());
     float result_mean;
 
-    std::copy(collection.begin(), collection.end(), result.begin());
-
-    std::sort(result.begin(), result.end(), 
+    std::sort(collection.begin(), collection.end(), 
         [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
 
-    auto it = std::find_if(result.begin(), result.end(),    
+    auto it = std::find_if(collection.begin(), collection.end(),    
         [](auto& arg) {return arg.isMale();}); 
 
-    result.erase(it, result.end());
+    collection.erase(it, collection.end());
 
-    result_mean = calculateMean(result);
+    result_mean = calculateMean(collection);
     
     return result_mean;
 }
