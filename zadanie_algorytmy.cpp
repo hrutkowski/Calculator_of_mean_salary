@@ -54,7 +54,6 @@ auto calculateMean(CollectionType collection)
 template<typename CollectionType>
 auto calculateMaleMean(CollectionType collection)
 {
-    float result_mean;
 
     std::sort(collection.begin(), collection.end(), 
         [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
@@ -64,7 +63,7 @@ auto calculateMaleMean(CollectionType collection)
 
     collection.erase(collection.begin(), it);
 
-    result_mean = calculateMean(collection);
+    auto result_mean = calculateMean(collection);
     
     return result_mean;
 }
@@ -72,7 +71,6 @@ auto calculateMaleMean(CollectionType collection)
 template<typename CollectionType>
 auto calculateFemaleMean(CollectionType collection)
 {
-    float result_mean;
 
     std::sort(collection.begin(), collection.end(), 
         [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
@@ -82,7 +80,7 @@ auto calculateFemaleMean(CollectionType collection)
 
     collection.erase(it, collection.end());
 
-    result_mean = calculateMean(collection);
+    auto result_mean = calculateMean(collection);
     
     return result_mean;
 }
