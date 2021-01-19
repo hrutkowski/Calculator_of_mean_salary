@@ -40,14 +40,14 @@ auto getEmployees()
 template<typename CollectionType>
 auto calculateMean(CollectionType collection)
 {
-    float result, sum, number;
+    float result, salary_sum, people_number;
 
-    sum = std::accumulate(collection.begin(), collection.end(), 0,                              
+    salary_sum = std::accumulate(collection.begin(), collection.end(), 0,                              
     [](const auto& arg1, const auto& arg2){return arg1 + arg2.salary();} );
 
-    number = collection.size();
+    people_number = collection.size();
 
-    result = sum / number;
+    result = salary_sum / people_number;
 
     return result;
 }
