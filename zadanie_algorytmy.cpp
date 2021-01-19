@@ -37,6 +37,14 @@ auto getEmployees()
     return result;
 }
 
+template<typename CollectionType>
+auto calculateMean(CollectionType collection)
+{
+    int result;
+    
+    return result;
+}
+
 
 int main()
 {
@@ -44,7 +52,7 @@ int main()
 
     auto employees = getEmployees();
 
-    // std::cout << "Średnia zarobków wszystkich pracowników wynosi : " << calculateMean(employees) << "\n";
+    std::cout << "Średnia zarobków wszystkich pracowników wynosi : " << calculateMean(employees) << "\n";
     // std::cout << "Średnia zarobków mężczyzn wynosi : " << calculateMaleMean(employees) << "\n";
     // std::cout << "Średnia zarobków kobiet wynosi : " << calculateFemaleMean(employees) << "\n";
 
