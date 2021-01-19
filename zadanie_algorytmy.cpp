@@ -56,7 +56,7 @@ template<typename CollectionType>
 auto calculateMaleMean(CollectionType collection)
 {
     std::vector<Employee> result(collection.size());
-    float result_male;
+    float result_mean;
 
     std::copy(collection.begin(), collection.end(), result.begin());
 
@@ -68,18 +68,31 @@ auto calculateMaleMean(CollectionType collection)
 
     result.erase(result.begin(), it);
 
-    result_male = calculateMean(result);
+    result_mean = calculateMean(result);
     
-    return result_male;
+    return result_mean;
 }
 
-/* template<typename CollectionType>
+template<typename CollectionType>
 auto calculateFemaleMean(CollectionType collection)
 {
-    std::vector<Employee> result;
+    std::vector<Employee> result(collection.size());
+    float result_mean;
 
-    calculateMean(result);
-} */
+    std::copy(collection.begin(), collection.end(), result.begin());
+
+    std::sort(result.begin(), result.end(), 
+        [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
+
+    auto it = std::find_if(result.begin(), result.end(),    
+        [](auto& arg) {return arg.isMale();}); 
+
+    result.erase(it, result.end());
+
+    result_mean = calculateMean(result);
+    
+    return result_mean;
+}
 
 int main()
 {
@@ -89,7 +102,7 @@ int main()
     
     std::cout << "Średnia zarobków wszystkich pracowników wynosi : " << calculateMean(employees) << "\n";
     std::cout << "Średnia zarobków mężczyzn wynosi : " << calculateMaleMean(employees) << "\n";
-    //std::cout << "Średnia zarobków kobiet wynosi : " << calculateFemaleMean(employees) << "\n";
+    std::cout << "Średnia zarobków kobiet wynosi : " << calculateFemaleMean(employees) << "\n";
 
     return 0;
 }
