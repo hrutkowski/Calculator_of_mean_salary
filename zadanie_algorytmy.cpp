@@ -26,7 +26,7 @@ auto getEmployees()
 {
     auto result = std::vector<Employee>();
 
-    result.emplace_back("Jan Niezbędny", 20000, true);
+    result.emplace_back("Jan Niezbędny", 20000, true); //2000
     result.emplace_back("Fryderyk Niekonieczny", 3200, true);
     result.emplace_back("Zofia Przydatna", 8400, false);
     result.emplace_back("Anna Pracowita", 12500, false);
@@ -40,8 +40,15 @@ auto getEmployees()
 template<typename CollectionType>
 auto calculateMean(CollectionType collection)
 {
-    int result;
-    
+    int result, sum, number;
+
+    sum = std::accumulate(collection.begin(), collection.end(), 0,                              
+    [](const auto& arg1, const auto& arg2){return arg1 + arg2.salary();} );
+
+    number = collection.size();
+
+    result = sum / number;
+
     return result;
 }
 
