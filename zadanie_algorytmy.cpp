@@ -40,21 +40,17 @@ auto getEmployees()
 template<typename CollectionType>
 auto calculateMean(CollectionType collection)
 {
-
     auto salary_sum = std::accumulate(collection.begin(), collection.end(), 0,                              
     [](const auto& arg1, const auto& arg2){return arg1 + arg2.salary();} );
 
     auto people_number = collection.size();
 
-    auto result = salary_sum / people_number;
-
-    return result;
+    return salary_sum / people_number;
 }
 
 template<typename CollectionType>
 auto calculateMaleMean(CollectionType collection)
 {
-
     std::sort(collection.begin(), collection.end(), 
         [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
 
@@ -63,15 +59,12 @@ auto calculateMaleMean(CollectionType collection)
 
     collection.erase(collection.begin(), it);
 
-    auto result_mean = calculateMean(collection);
-    
-    return result_mean;
+    return calculateMean(collection);
 }
 
 template<typename CollectionType>
 auto calculateFemaleMean(CollectionType collection)
 {
-
     std::sort(collection.begin(), collection.end(), 
         [](auto& lhs, auto& rhs) { return lhs.isMale() < rhs.isMale();}); 
 
@@ -80,9 +73,7 @@ auto calculateFemaleMean(CollectionType collection)
 
     collection.erase(it, collection.end());
 
-    auto result_mean = calculateMean(collection);
-    
-    return result_mean;
+    return calculateMean(collection);
 }
 
 int main()
