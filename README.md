@@ -1,2 +1,6 @@
 # Calculation-of-mean-salary
-Simple test of different possibilities in coding. Trying our lambda functions, templates etc.
+Simple test of different possibilities in coding.
+Usage of:
+- classes (object oriented programming)
+- lambda functions
+- templates
